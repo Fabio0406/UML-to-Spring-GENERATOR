@@ -1,1 +1,6 @@
 /node_module
+
+# Secretos y archivos generados (no subir)
+.env
+env/.env
+node_modules/

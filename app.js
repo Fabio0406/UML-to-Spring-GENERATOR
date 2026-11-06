@@ -26,7 +26,7 @@ const bcrypt = require('bcryptjs');
 // 6 - Configuración de sesiones
 const session = require('express-session');
 app.use(session({
-	secret: 'secret',
+	secret: process.env.SESSION_SECRET,
 	resave: true,
 	saveUninitialized: true
 }));
@@ -72,15 +72,6 @@ app.post('/auth', async (req, res) => {
 						ruta: '/login'
 					});
 				}
-				res.render('login', {
-					alert: true,
-					alertTitle: "Error",
-					alertMessage: "USUARIO y/o PASSWORD incorrectas",
-					alertIcon: 'warning',
-					showConfirmButton: true,
-					timer: 3000,
-					ruta: '/login'
-				});
 			} else {
 				// Crear variables de sesión
 				req.session.loggedin = true;
